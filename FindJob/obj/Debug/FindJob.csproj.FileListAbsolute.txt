@@ -1,0 +1,10 @@
+D:\visual studio 2010\Projects\FindJob\FindJob\bin\FindJob.dll
+D:\visual studio 2010\Projects\FindJob\FindJob\bin\FindJob.pdb
+D:\visual studio 2010\Projects\FindJob\FindJob\bin\HtmlAgilityPack.dll
+D:\visual studio 2010\Projects\FindJob\FindJob\bin\Newtonsoft.Json.dll
+D:\visual studio 2010\Projects\FindJob\FindJob\bin\HtmlAgilityPack.pdb
+D:\visual studio 2010\Projects\FindJob\FindJob\bin\HtmlAgilityPack.xml
+D:\visual studio 2010\Projects\FindJob\FindJob\bin\Newtonsoft.Json.xml
+D:\visual studio 2010\Projects\FindJob\FindJob\obj\Debug\FindJob.dll
+D:\visual studio 2010\Projects\FindJob\FindJob\obj\Debug\FindJob.pdb
+D:\visual studio 2010\Projects\FindJob\FindJob\obj\Debug\FindJob.csprojResolveAssemblyReference.cache
