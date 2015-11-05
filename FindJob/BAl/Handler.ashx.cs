@@ -71,33 +71,7 @@ namespace FindJob.BAl
            {
                jobList.AddRange(v.GetJobList());
            }
-            //if (pars.From.Contains("zlzp"))
-            //{
-            //    TasksDelegate zlzpDele = GetFromZlzp;
-            //    IAsyncResult ar = zlzpDele.BeginInvoke(pars, null, null);
-            //    while (!ar.IsCompleted)
-            //    {
-            //        if (pars.From.Contains("qcwy"))
-            //        {
-            //            jobList.AddRange(GetFromQcwy(pars));
-            //        }
-            //    }
-            //    jobList.AddRange(zlzpDele.EndInvoke(ar));
-            //}
-
-
-            //if (pars.From.Contains("zlzp"))
-            //{
-            //    jobList.AddRange(GetFromZlzp(pars));
-            //}
-            //if (pars.From.Contains("qcwy"))
-            //{
-            //    jobList.AddRange(GetFromQcwy(pars));
-            //}
-            //if (pars.From.Contains("lpw"))
-            //{
-            //}
-
+          
 
             return jobList;
 
