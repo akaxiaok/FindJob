@@ -4,8 +4,35 @@
 	margin-left: 25%;
 	margin-top: 3%;
 }
-#btn {
-	position:relative;
-	margin-left: 0%;
+#btns
+{
+	position: relative;
+	margin-left: 10%;
 	margin-top: 0%;
+}
+
+#registWin span
+{
+	position: relative;
+	margin-left: 10%;
+}
+.oriUrl
+{
+	color: #FF0000;
+	text-decoration: underline;
+}
+.colUrl
+{
+	color: #00FF00;
+	text-decoration: none;
+}
+#headAfterLogin
+{
+	position: absolute;
+	right: 0;
+}
+#header
+{
+	position: absolute;
+	left: 0;
 }

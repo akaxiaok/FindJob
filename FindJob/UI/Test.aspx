@@ -14,9 +14,14 @@
     <title>Title</title>
 </head>
 <body>
-    <form id="HtmlForm">
+    <form id="form1" runat="server">
     <table id="tt">
     </table>
+    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    <asp:TextBox ID="UserNameText" runat="server"></asp:TextBox>
+    <asp:TextBox ID="PassWordText" runat="server"></asp:TextBox>
+    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
     </form>
 </body>
 </html>

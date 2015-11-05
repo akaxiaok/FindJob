@@ -11,6 +11,9 @@
     type="text/javascript"></script>
 <script src="../Scripts/jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
 <script type="text/javascript" src="../Scripts/UIJS.js"></script>
+<script src="../Scripts/CryptoJS/components/core-min.js" type="text/javascript"></script>
+<script src="../Scripts/CryptoJS/rollups/sha1.js" type="text/javascript"></script>
+ 
 <link href="../CSS/MyStyle.css" rel="stylesheet" type="text/css" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -19,8 +22,8 @@
 <body class="easyui-layout">
     <div data-options="region:'north', split:false,border:false" style="height: 20%;">
         <div id="header">
-            <a id="btnLogin" href="#" class="easyui-linkbutton" data-options="">登陆</a>
-            <a id="btnRegist" href="#" class="easyui-linkbutton" data-options="">注册</a>
+            <a id="btnLogin" href="#" onclick="login()" class="easyui-linkbutton" data-options="">登陆</a> <a id="btnRegist"
+                href="#" onclick="regist()" class="easyui-linkbutton" data-options="">注册</a>
         </div>
         <div id="search">
             <input id="addr" />
@@ -36,4 +39,24 @@
         </table>
     </div>
 </body>
+<div id="registWin" style="display: none">
+    <span>
+        <input id="userName" type="text" /></span><br />
+    <span>
+        <input id="password" type="password" /></span><br />
+    <span>
+        <input id="rePassword" type="password" /></span><br />
+    <span>
+        <input id="email" type="text" /></span><br />
+        <div id="btns">
+         <a id="regist" href="#" onclick="ensure()"  class="easyui-linkbutton">注册</a> 
+    <a id="cacel" href="#" onclick="cacel()" class="easyui-linkbutton">关闭</a>
+</div>
+   <div id="loginWin" style="display: none">
+       <span><input id="loginName" type="text"/> </span><br />
+       <span><input id="loginPwd" type="password" /></span><br />
+       <a id="loginEnsure" href="#" onclick="loginEnsure()"  class="easyui-linkbutton">登陆</a> 
+        <a id="loginCacel" href="#" onclick="loginCacel()" class="easyui-linkbutton">关闭</a>
+   </div>
+</div>
 </html>
