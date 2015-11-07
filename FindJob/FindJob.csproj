@@ -153,6 +153,7 @@
     <Content Include="Scripts\CryptoJS\rollups\sha384.js" />
     <Content Include="Scripts\CryptoJS\rollups\sha512.js" />
     <Content Include="Scripts\CryptoJS\rollups\tripledes.js" />
+    <Content Include="Scripts\datagrid-detailview.js" />
     <Content Include="Scripts\jquery-easyui-1.4.2\changelog.txt" />
     <Content Include="Scripts\jquery-easyui-1.4.2\demo-mobile\accordion\basic.html" />
     <Content Include="Scripts\jquery-easyui-1.4.2\demo-mobile\accordion\header.html" />
@@ -835,9 +836,6 @@
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="UI\Collection.aspx" />
     <Content Include="UI\Home.aspx" />
     <Content Include="UI\Main.aspx" />
@@ -888,41 +886,41 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\Collect.ashx.cs">
+    <Compile Include="Handler\Collect.ashx.cs">
       <DependentUpon>Collect.ashx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\Collection.ashx.cs">
+    <Compile Include="Handler\Collection.ashx.cs">
       <DependentUpon>Collection.ashx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\Content.ashx.cs">
+    <Compile Include="Handler\Content.ashx.cs">
       <DependentUpon>Content.ashx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\EmailHelper.cs" />
-    <Compile Include="BAl\Handler.ashx.cs">
+    <Compile Include="Class\EmailHelper.cs" />
+    <Compile Include="Handler\Handler.ashx.cs">
       <DependentUpon>Handler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\IsOutData.ashx.cs">
+    <Compile Include="Handler\IsOutData.ashx.cs">
       <DependentUpon>IsOutData.ashx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\Login.ashx.cs">
+    <Compile Include="Handler\Login.ashx.cs">
       <DependentUpon>Login.ashx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\Logout.ashx.cs">
+    <Compile Include="Handler\Logout.ashx.cs">
       <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
-    <Compile Include="BAl\Regist.ashx.cs">
+    <Compile Include="Handler\Regist.ashx.cs">
       <DependentUpon>Regist.ashx</DependentUpon>
     </Compile>
-    <Compile Include="DAl\Lpw.cs" />
-    <Compile Include="DAl\Qcwy.cs" />
-    <Compile Include="DAl\SqlHelper.cs" />
+    <Compile Include="Class\Lpw.cs" />
+    <Compile Include="Class\Qcwy.cs" />
+    <Compile Include="Class\SqlHelper.cs" />
     <Compile Include="Log\LogConfig.cs" />
     <Compile Include="Log\LogHelper.cs" />
     <Compile Include="Log\LogModel.cs" />
     <Compile Include="Log\LogSave.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="DAl\ZhaoPin.cs" />
-    <Compile Include="DAl\Zlzp.cs" />
+    <Compile Include="Class\ZhaoPin.cs" />
+    <Compile Include="Class\Zlzp.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -986,16 +984,16 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BAl\Handler.ashx" />
+    <Content Include="Handler\Handler.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BAl\Content.ashx" />
-    <Content Include="BAl\Regist.ashx" />
-    <Content Include="BAl\Login.ashx" />
-    <Content Include="BAl\Collect.ashx" />
-    <Content Include="BAl\Logout.ashx" />
-    <Content Include="BAl\IsOutData.ashx" />
-    <Content Include="BAl\Collection.ashx" />
+    <Content Include="Handler\Content.ashx" />
+    <Content Include="Handler\Regist.ashx" />
+    <Content Include="Handler\Login.ashx" />
+    <Content Include="Handler\Collect.ashx" />
+    <Content Include="Handler\Logout.ashx" />
+    <Content Include="Handler\IsOutData.ashx" />
+    <Content Include="Handler\Collection.ashx" />
     <None Include="Scripts\jquery-easyui-1.4.2\demo\accordion\datagrid_data1.json" />
     <None Include="Scripts\jquery-easyui-1.4.2\demo\combobox\combobox_data1.json" />
     <None Include="Scripts\jquery-easyui-1.4.2\demo\combobox\combobox_data2.json" />

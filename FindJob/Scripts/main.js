@@ -1,16 +1,4 @@
-﻿/********************************************************************
-created:	2015/10/15
-created:	15:10:2015   16:22
-filename: 	D:\visual studio 2010\Projects\FindJob\FindJob\Scripts\UIJS.js
-file path:	D:\visual studio 2010\Projects\FindJob\FindJob\Scripts
-file base:	UIJS
-file ext:	js
-author:		Kimi
-	
-purpose:	
-*********************************************************************/
-
-
+﻿
 
 var text;
 var expandRowIndex = -1;
@@ -123,7 +111,7 @@ $(function () {
     /// </summary>
     var c = GetCookie("Id");
     if (c !== 0) {
-        $.post("/BAL/IsOutData.ashx", { cookie: c }, function (data) {
+        $.post("/Handler/IsOutData.ashx", { cookie: c }, function (data) {
             if (data == "outdata") {
                 return;
             }
@@ -149,7 +137,7 @@ function search() {
     $("#collection").datagrid();
     $("#collection").datagrid("getPanel").panel("minimize");
     $("#dg").datagrid({
-        url: "../BAL/Handler.ashx",
+        url: "../Handler/Handler.ashx",
         queryParams: {
             addr: $("#addr").combobox("getText"),
             key: $("#searchBox").val(),
@@ -186,7 +174,7 @@ function search() {
         },
         onExpandRow: function (index, row) {//显示详细信息
             $("#" + index).panel({
-                href: "../BAL/Content.ashx?url=" + row.InfoUrl,
+                href: "../Handler/Content.ashx?url=" + row.InfoUrl,
                 border: true,
                 cache: false,
                 onLoad: function () {
@@ -262,7 +250,7 @@ function loginEnsure() {
     user.name = $("#loginName").val();
     user.pwd = CryptoJS.SHA1($("#loginPwd").val()).toString();
     if ($("#loginWin").form("validate")) {
-        $.post("/BAL/Login.ashx", user, function (data) {
+        $.post("/Handler/Login.ashx", user, function (data) {
             if (data === "True") {
                 $.messager.alert("", "登陆成功!", "info", function () {
                     $("#loginWin").window("close");
@@ -360,7 +348,7 @@ function ensure() {
     user.email = $("#email").val();
     if ($("#registWin").form("validate")) {
         var result;
-        $.post("/BAL/Regist.ashx", user, function (data) {
+        $.post("/Handler/Regist.ashx", user, function (data) {
 
             switch (data) {
                 case "Success":
@@ -422,7 +410,7 @@ function GetCookie(sName) {
 /// </summary>
 function addToCollect() {
     var postData = { data: JSON.stringify(selceted) };
-    $.post("/BAL/Collect.ashx", postData, function (data) {
+    $.post("/Handler/Collect.ashx", postData, function (data) {
         if (data == "true") {
             $.messager.alert("成功", "已添加至收藏夹", "info", function () {
             });
@@ -457,7 +445,7 @@ function logoutClick() {
 /// </summary>
 function logout() {
 
-    $.post("/BAL/logout.ashx", { logout: true }, function (data) {
+    $.post("/Handler/logout.ashx", { logout: true }, function (data) {
         if (data == "Success")
             $("#headAfterLogin").hide();
         $("#header").show(); ///
@@ -472,7 +460,7 @@ function collection() {
     //   dg.pan
     //    $("#collection").show();
     $("#collection").datagrid({
-        url: "../BAL/Collection.ashx",
+        url: "../Handler/Collection.ashx",
         selectOnCheck: true,
         fit: true,
         fitColumns: true,
@@ -504,7 +492,7 @@ function collection() {
         },
         onExpandRow: function (index, row) {//显示详细信息
             $("#" + index).panel({
-                href: "../BAL/Content.ashx?url=" + row.InfoUrl,
+                href: "../Handler/Content.ashx?url=" + row.InfoUrl,
                 border: true,
                 cache: false,
                 onLoad: function () {

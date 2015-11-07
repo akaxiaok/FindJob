@@ -7,7 +7,6 @@
 .icon-edit{
 	background:url('icons/pencil.png') no-repeat center center;
 }
-
 .icon-clear{
 	background:url('icons/clear.png') no-repeat center center;
 }
@@ -34,12 +33,6 @@
 }
 .icon-search{
 	background:url('icons/search.png') no-repeat center center;
-} 
-.icon-hidden{
-	background:url('icons/Hidden.png') no-repeat center center;
-} 
-.icon-searchNew {
-	background:url('../../../Sources/iconfont-iconsreachsmall.png') no-repeat center center;
 }
 .icon-print{
 	background:url('icons/print.png') no-repeat center center;
