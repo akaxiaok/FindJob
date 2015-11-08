@@ -11,10 +11,11 @@
 	margin-top: 0%;
 }
 
-#registWin span
+#regInfo
 {
 	position: relative;
 	margin-left: 10%;
+	margin-top: 5%;
 }
 .oriUrl
 {
@@ -36,3 +37,14 @@
 	position: absolute;
 	left: 0;
 }
+#input
+{
+	position: relative;
+	margin: 10% 50px 0 10%;
+}
+#btnLog
+{
+	position: relative;
+	margin-left: 10% ;
+}
+
