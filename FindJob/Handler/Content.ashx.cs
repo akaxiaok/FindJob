@@ -52,7 +52,7 @@ namespace FindJob.Handler
         {
             var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("gb2312") };
             HtmlDocument htmlDoc = htmlWeb.Load(url);
-            result = htmlDoc.DocumentNode.SelectSingleNode("//*[@class='txt_4 wordBreakNormal job_detail ']").InnerHtml;
+            result = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='tCompany_introduction']").InnerHtml;
         }
 
         private void GetFromLPW(string url, out string result)

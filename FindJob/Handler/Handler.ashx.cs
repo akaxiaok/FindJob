@@ -83,74 +83,7 @@ namespace FindJob.Handler
             }
         }
 
-
-
-        #region Abandoned
-        private static List<JobInfo> GetFromZlzp(Params pars)
-        {
-            List<JobInfo> jobList = new List<JobInfo>();
-            var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("UTF-8") };
-
-            HtmlDocument htmlDoc = htmlWeb.Load(string.Format("http://sou.zhaopin.com/jobs/searchresult.ashx?jl={0}&kw={1}&p={2}", DataClass.GetDic_zhilian(pars.Addr), pars.Key, pars.Page));
-            var nodeList = htmlDoc.DocumentNode.SelectNodes("//*[@id='newlist_list_content_table']/table[@class='newlist']").AsParallel().ToList();
-            for (int i = 1; i < nodeList.Count; i++)
-            {
-                var node = nodeList[i];
-                var job = new JobInfo();
-                job.TitleName = node.SelectSingleNode(".//tr/td[@class='zwmc']/div/a").InnerText;
-                job.InfoUrl = node.SelectSingleNode(".//tr/td[@class='zwmc']/div/a").Attributes["href"].Value;
-                job.Company = node.SelectSingleNode(".//tr/td[@class='gsmc']/a").InnerText;
-                job.Salary = node.SelectSingleNode(".//tr/td[@class='zwyx']").InnerText;
-                job.City = node.SelectSingleNode(".//tr/td[@class='gzdd']").InnerText;
-                job.Date = node.SelectSingleNode(".//tr/td[@class='gxsj']/span").InnerText;
-                job.Source = "智联招聘";
-                job.Method = "月薪";
-                jobList.Add(job);
-            }
-            return jobList;
-        }
-
-
-        private static List<JobInfo> GetFromQcwy(Params pars)
-        {
-            List<JobInfo> jobList = new List<JobInfo>();
-            var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("gb2312") };
-
-            HtmlDocument htmlDoc = htmlWeb.Load(string.Format("http://search.51job.com/jobsearch/search_result.php?jobarea={0}&keyword={1}&curr_page={2}", DataClass.GetDic_qiancheng(pars.Addr), pars.Key, pars.Page));
-
-            var nodeList = htmlDoc.DocumentNode.SelectNodes("//*[@id='resultList']/tr[@class='tr0']").AsParallel().ToList();
-            for (int i = 1; i < nodeList.Count; i++)
-            {
-                var node = nodeList[i];
-                var job = new JobInfo
-                {
-                    TitleName = node.SelectSingleNode(".//a[@class='jobname']").InnerText,
-                    InfoUrl = node.SelectSingleNode(".//a[@class='jobname']").Attributes["href"].Value,
-                    Company = node.SelectSingleNode(".//a[@class='coname']").InnerText,
-                    Salary = "详见原页面",
-                    City = node.SelectSingleNode(".//td[@class='td3']/span").InnerText,
-                    Date = node.SelectSingleNode(".//td[@class='td4']/span").InnerText,
-                    Source = "前程无忧",
-                    Method = "月薪"
-                };
-                jobList.Add(job);
-            }
-            return jobList;
-        }
-        private string GetSalary(string url)
-        {
-            var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("gb2312") };
-            HtmlDocument htmlDoc = htmlWeb.Load(url);
-            try
-            {
-                return htmlDoc.DocumentNode.SelectSingleNode("//td[@class='txt_2 jobdetail_xsfw_color ']").InnerText;
-            }
-            catch (System.Exception ex)
-            {
-                return "";
-            }
-        }
-        #endregion
+        
         
 
 
