@@ -21,7 +21,7 @@
                 <input id="searchBox" class="searchBox" type="text" />
                 <div id="checkboxs">
                     <input id="zlzp" checked="checked" type="checkbox">智联招聘<input id="qcwy" checked="checked"
-                        type="checkbox">前程无忧<input id="lpw" checked="checked" type="checkbox">猎聘网</div>
+                        type="checkbox">前程无忧<input id="lpw" checked="checked" type="checkbox">猎聘网<input id="lgw" checked="checked" type="checkbox">拉勾网</div>
             </div>
         </div>
         <div id="main" data-options="region:'center', split:true,border:false">

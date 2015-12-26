@@ -26,6 +26,9 @@ $(function () {
             if ($("#lpw").is(":checked")) {
                 fromWhere += ",lpw";
             }
+            if ($("#lgw").is(":checked")) {
+                fromWhere += ",lgw";
+            }
             search();
         }
     });
@@ -100,6 +103,9 @@ $(function () {
             }
             if ($("#lpw").is(":checked")) {
                 fromWhere += ",lpw";
+            }
+            if ($("#lgw").is(":checked")) {
+                fromWhere += ",lgw";
             }
             search();
         }

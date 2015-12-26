@@ -21,7 +21,7 @@ namespace FindJob.Class
         {
             return _jobList;
         }
-        public void GetJobListFromWeb()
+        public void GetJobListFromWeb(object o)
         {
             try
             {
@@ -32,17 +32,17 @@ namespace FindJob.Class
                         DataClass.GetDic_liepin(_pars.Addr), _pars.Page));
 
                 var nodeList =
-                    htmlDoc.DocumentNode.SelectNodes("//ul[@class='sojob-result-list']/li ").AsParallel().ToList();
+                    htmlDoc.DocumentNode.SelectNodes("//ul[@class='sojob-list']/li ").AsParallel().ToList();
                 for (int i = 0; i < nodeList.Count; i++)
                 {
                     var node = nodeList[i];
                     var job = new JobInfo();
-                    job.TitleName = node.SelectSingleNode(".//a").Attributes["title"].Value.Substring(2);
-                    job.InfoUrl = node.SelectSingleNode(".//a").Attributes["href"].Value;
-                    job.Company = node.SelectSingleNode(".//a/dl/dt[@class='company']").InnerText;
-                    job.Salary = node.SelectSingleNode(".//a/dl/dt[@class='salary']/em").InnerText;
-                    job.City = node.SelectSingleNode(".//a/dl/dt[@class='city']/span").InnerText;
-                    job.Date = node.SelectSingleNode(".//a/dl/dt[@class='date']/span").InnerText.Substring(5);
+                    job.TitleName = node.SelectSingleNode(".//div/div[@class='job-info']/h3").Attributes["title"].Value.Substring(2);
+                    job.InfoUrl = node.SelectSingleNode(".//div/div[@class='job-info']/h3/a").Attributes["href"].Value;
+                    job.Company = node.SelectSingleNode(".//div/div[@class='company-info']/p/a").Attributes["title"].Value;
+                    job.Salary = node.SelectSingleNode(".//div/div[@class='job-info']/p[@class='condition clearfix']/span[@class='text-warning']").InnerText;
+                    job.City = node.SelectSingleNode(".//div/div[@class='job-info']/p[@class='condition clearfix']/*[@class='area']").InnerText;
+                    job.Date = node.SelectSingleNode(".//div/div[@class='job-info']/p[@class='time-info clearfix']/time").InnerText.Substring(4);
                     job.Source = "猎聘网";
                     job.Method = "年薪";
                     _jobList.Add(job);

@@ -34,7 +34,10 @@ namespace FindJob.Handler
             {
                 GetFromLPW(url, out result);
             }
-
+            else if (url.Contains("lagou"))
+            {
+                GetFromLGW(url, out result);
+            }
             return result;
 
         }
@@ -43,25 +46,69 @@ namespace FindJob.Handler
         {
             var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("UTF-8") };
             HtmlDocument htmlDoc = htmlWeb.Load(url);
-            result = htmlDoc.DocumentNode.SelectSingleNode("//*[@class='tab-inner-cont']").InnerHtml;
-            int index = result.IndexOf("<b>", StringComparison.Ordinal);
-            result = result.Substring(0, index);
+
+            try
+            {
+                result = htmlDoc.DocumentNode.SelectSingleNode("//*[@class='tab-inner-cont']").InnerHtml;
+                int index = result.IndexOf("<b>", StringComparison.Ordinal);
+                result = result.Substring(0, index);
+            }
+            catch (Exception)
+            {
+                result = "error";
+                throw;
+            }
+
+          
         }
 
         private void GetFromQcwy(string url, out string result)
         {
             var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("gb2312") };
             HtmlDocument htmlDoc = htmlWeb.Load(url);
-            result = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='tCompany_introduction']").InnerHtml;
+            try
+            {
+                result = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='tCompany_introduction']").InnerHtml;
+            }
+            catch (Exception)
+            {
+                result = "error";
+                throw;
+            }
+           
         }
 
         private void GetFromLPW(string url, out string result)
         {
             var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("UTF-8") };
             HtmlDocument htmlDoc = htmlWeb.Load(url);
-            result = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='content content-word']").InnerHtml;
+            try
+            {
+                result = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='content content-word']").InnerHtml;
+            }
+            catch (Exception)
+            {
+                result = "error";
+                throw;
+            }
+          
         }
 
+        private void GetFromLGW(string url, out string result)
+        {
+            var htmlWeb = new HtmlWeb { OverrideEncoding = Encoding.GetEncoding("UTF-8") };
+            HtmlDocument htmlDoc = htmlWeb.Load(url);
+            try
+            {
+                result = htmlDoc.DocumentNode.SelectSingleNode("//dd[@class='job_bt']").InnerHtml;
+            }
+            catch (Exception)
+            {
+                result = "error";
+                throw;
+            }
+             
+        }
         public bool IsReusable
         {
             get

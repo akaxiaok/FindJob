@@ -22,7 +22,7 @@ namespace FindJob.Class
             return _jobList;
         }
 
-        public void GetJobListFromWeb()
+        public void GetJobListFromWeb(object o)
         {
             try
             {
