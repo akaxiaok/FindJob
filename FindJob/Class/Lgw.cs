@@ -21,7 +21,7 @@ namespace FindJob.Class
             return _jobList;
         }
 
-        public void GetJobListFromWeb(object o)
+        public void GetJobListFromWeb( )
         {
             string url = "http://www.lagou.com/jobs/positionAjax.json?city=" + _pars.Addr;
             StringContent fromurlcontent = new StringContent("first=true&pn=" + _pars.Page + "&kd=" + _pars.Key);

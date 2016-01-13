@@ -89,7 +89,7 @@ namespace FindJob.Class
 
 
 
-        public void GetJobListFromWeb(object o)
+        public void GetJobListFromWeb( )
         {
             try
             {

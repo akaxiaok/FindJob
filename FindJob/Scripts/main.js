@@ -94,7 +94,7 @@ $(function () {
     /// </summary>
 
     $(document).keypress(function (e) {
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             if ($("#zlzp").is(":checked")) {
                 fromWhere = "zlzp";
             }
@@ -118,7 +118,7 @@ $(function () {
     var c = GetCookie("Id");
     if (c !== 0) {
         $.post("/Handler/IsOutData.ashx", { cookie: c }, function (data) {
-            if (data == "outdata") {
+            if (data === "outdata") {
                 return;
             }
         });
@@ -170,10 +170,10 @@ function search() {
         detailFormatter: function (index, row) {
             return "<div  id='" + index + "'></div></br>" + "<a class='oriUrl' href=" + row.InfoUrl + " target='_blank'>访问原页</a>" + "</br><a class='colUrl' href='#' onclick='addToCollect()'>加入收藏</a>";
         },
-        onLoadSuccess: function (data) {
+        onLoadSuccess: function () {
             $("#dg").datagrid("scrollTo", "0");
         },
-        rowStyler: function (index, row) {
+        rowStyler: function () {
 
             return "height:" + setWidth(5);
 
@@ -190,9 +190,9 @@ function search() {
             $("#dg").datagrid("fixDetailRowHeight", index);
             selceted = row;
         },
-        onClickRow: function (index, row) {//点击行展开或折叠
+        onClickRow: function (index) {//点击行展开或折叠
 
-            if (index == expandRowIndex) {
+            if (index === expandRowIndex) {
                 $("#dg").datagrid("collapseRow", expandRowIndex);
                 expandRowIndex = -1;
             } else {
@@ -376,7 +376,7 @@ function ensure() {
                     break;
             }
             $.messager.alert("", result, "info", function () {
-                if (data == "Success") {
+                if (data === "Success") {
                     $("#registWin").window("close");
                     $("#header").hide();
                     $("#password").textbox("clear");
@@ -405,7 +405,7 @@ function GetCookie(sName) {
     var aCookie = document.cookie.split(";");
     for (var i = 0; i < aCookie.length; i++) {
         var aCrumb = aCookie[i].split("=");
-        if (sName == aCrumb[0] || aCrumb[0] == " " + sName)
+        if (sName === aCrumb[0] || aCrumb[0] === " " + sName)
             return unescape(aCrumb[1]);
     }
     return 0;
@@ -417,13 +417,13 @@ function GetCookie(sName) {
 function addToCollect() {
     var postData = { data: JSON.stringify(selceted) };
     $.post("/Handler/Collect.ashx", postData, function (data) {
-        if (data == "true") {
+        if (data === "true") {
             $.messager.alert("成功", "已添加至收藏夹", "info", function () {
             });
-        } else if (data == "exist") {
+        } else if (data === "exist") {
             $.messager.alert("失败", "已收藏过该职位", "warning", function () {
             });
-        } else if (data == "login") {
+        } else if (data === "login") {
             $.messager.alert("失败", "添加失败，请登陆后再试", "error", function () {
             });
         }
@@ -452,7 +452,7 @@ function logoutClick() {
 function logout() {
 
     $.post("/Handler/logout.ashx", { logout: true }, function (data) {
-        if (data == "Success")
+        if (data === "Success")
             $("#headAfterLogin").hide();
         $("#header").show(); ///
     });
@@ -488,10 +488,10 @@ function collection() {
         detailFormatter: function (index, row) {
             return "<div  id='" + index + "'></div></br>" + "<a class='oriUrl' href=" + row.InfoUrl + " target='_blank'>访问原页</a>";
         },
-        onLoadSuccess: function (data) {
+        onLoadSuccess: function () {
             $("#collection").datagrid("scrollTo", "0");
         },
-        rowStyler: function (index, row) {
+        rowStyler: function () {
 
             return "height:" + setWidth(5);
 
@@ -508,9 +508,9 @@ function collection() {
             $("#collection").datagrid("fixDetailRowHeight", index);
             selceted = row;
         },
-        onClickRow: function (index, row) {//点击行展开或折叠
+        onClickRow: function (index) {//点击行展开或折叠
 
-            if (index == expandRowIndex) {
+            if (index === expandRowIndex) {
                 $("#collection").datagrid("collapseRow", expandRowIndex);
                 expandRowIndex = -1;
             } else {

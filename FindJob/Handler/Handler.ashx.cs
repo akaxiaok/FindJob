@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using FindJob.Class;
 using FindJob.Model;
@@ -41,7 +42,9 @@ namespace FindJob.Handler
             int workerThreads = 0;
             int completionPortThreads = 0;
             ThreadPool.GetAvailableThreads(out workerThreads, out completionPortThreads);
-            int nowworkerThreads = 0;
+            List<Task> tasks = new List<Task>();
+            int taskFlag = 0;
+            Task tempTask = null;
             if (pars.From.Contains("zlzp"))
             {
                 var zlzp = new Zlzp(pars);
@@ -49,7 +52,13 @@ namespace FindJob.Handler
                 //zlzpThread.Start();
                 //threads.Add(zlzpThread);
                 zhaoPing.Add(zlzp);
-                ThreadPool.QueueUserWorkItem(zlzp.GetJobListFromWeb);
+                //ThreadPool.QueueUserWorkItem(zlzp.GetJobListFromWeb);
+                tempTask = Task.Factory.StartNew(() =>
+                {
+                    zlzp.GetJobListFromWeb();
+                });
+                tasks.Add(tempTask);
+                taskFlag++;
             }
             if (pars.From.Contains("qcwy"))
             {
@@ -58,8 +67,14 @@ namespace FindJob.Handler
                 //qcwyThread.Start();
                 //threads.Add(qcwyThread);
                 zhaoPing.Add(qcwy);
-                ThreadPool.QueueUserWorkItem(qcwy.GetJobListFromWeb);
-                // 
+                //ThreadPool.QueueUserWorkItem(qcwy.GetJobListFromWeb);
+                tempTask = Task.Factory.StartNew(() =>
+                {
+                    qcwy.GetJobListFromWeb();
+                });
+                tasks.Add(tempTask);
+
+                taskFlag++;
             }
             if (pars.From.Contains("lpw"))
             {
@@ -68,7 +83,13 @@ namespace FindJob.Handler
                 //lpwThread.Start();
                 //threads.Add(lpwThread);
                 zhaoPing.Add(lpw);
-                ThreadPool.QueueUserWorkItem(lpw.GetJobListFromWeb);
+                //ThreadPool.QueueUserWorkItem(lpw.GetJobListFromWeb);
+                tempTask = Task.Factory.StartNew(() =>
+                {
+                    lpw.GetJobListFromWeb();
+                });
+                tasks.Add(tempTask);
+                taskFlag++;
             }
             if (pars.From.Contains("lgw"))
             {
@@ -77,7 +98,13 @@ namespace FindJob.Handler
                 //lpwThread.Start();
                 //threads.Add(lpwThread);
                 zhaoPing.Add(lgw);
-                ThreadPool.QueueUserWorkItem(lgw.GetJobListFromWeb);
+                //ThreadPool.QueueUserWorkItem(lgw.GetJobListFromWeb);
+                tempTask = Task.Factory.StartNew(() =>
+                 {
+                     lgw.GetJobListFromWeb();
+                 });
+                tasks.Add(tempTask);
+                taskFlag++;
             }
             // foreach (var v in threads)
             // {
@@ -85,11 +112,13 @@ namespace FindJob.Handler
             // }
             // 
 
-            while (workerThreads != nowworkerThreads)
-            {
-                ThreadPool.GetAvailableThreads(out nowworkerThreads, out completionPortThreads);
-                Thread.Sleep(1000);
-            }
+            //while (workerThreads != nowworkerThreads)
+            //{
+            //    ThreadPool.GetAvailableThreads(out nowworkerThreads, out completionPortThreads);
+            //    Thread.Sleep(1000);
+            //}
+
+            Task.WaitAll(tasks.AsEnumerable().ToArray());
             foreach (var v in zhaoPing)
             {
                 jobList.AddRange(v.GetJobList());
@@ -105,9 +134,6 @@ namespace FindJob.Handler
                 return false;
             }
         }
-
-
-
 
 
     }
